@@ -1,0 +1,43 @@
+[package]
+name = "server"
+version = "0.1.0"
+authors = ["davidpodhola <david.podhola@hsharp.software>"]
+
+[dependencies]
+bson = "*"
+clippy = {version = "*", optional = true}
+iis = "*"
+serde = "1.0.2"
+serde_json = "1.0"
+serde_derive = "1.0.2"
+chrono = { version = "0.4", features = ["serde", "rustc-serialize"] }
+rust-crypto = "*"
+tiberius = { git = "https://github.com/steffengy/tiberius", default-features = true, features = ["chrono"], optional = true }
+#tiberius = { path = "D:\\S\\tiberius\\tiberius", default-features = true, features = ["chrono"], optional = true }
+#tiberius = { git = "https://github.com/davidpodhola/tiberius", default-features = true, features = ["chrono"], optional = true }
+futures = "*"
+tokio-core = "*"
+toml = "0.4"
+lazy_static = "0.2"
+reroute = "0.3.2"
+jwt="*"
+futures-state-stream = "*"
+slug = "*"
+rand = "0.3"
+unicase = "1.4.0"
+diesel = { version = "0.15.0", features = ["postgres", "chrono" ], optional = true }
+diesel_codegen = { version = "0.15.0", features = ["postgres"], optional = true }
+dotenv = { version = "0.10.1", optional = true }
+
+[features]
+default = [ "diesel", "diesel_codegen", "dotenv" ]
+mssql = [ "tiberius" ]
+orm = [ "diesel", "diesel_codegen", "dotenv" ]
+
+[dependencies.hyper]
+version = "*"
+default-features = false
+
+[dependencies.cookie]
+version = "*"
+default-features = false
